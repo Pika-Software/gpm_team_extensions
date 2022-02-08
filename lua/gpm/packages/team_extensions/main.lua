@@ -32,7 +32,7 @@ do
     local type = type
     hook.Add("OnTeamCreated", "game.Console", function( index, name, color )
         if ( type(console) == "table" ) and ( type(console.devLog) == "function" ) then
-            console.devLog( "Team #" .. index .." created - ", color, name ):setTag( "Team Extensions" ):setSeparator()
+            console.devLog( "Team #" .. index .." created - ", color, name ):setTag( "Team Extensions" )
         end
     end)
 
