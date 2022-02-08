@@ -1,3 +1,4 @@
+local packageName = PKG_NAME
 local hook_Run = hook.Run
 
 --[[-------------------------------------------------------------------------
@@ -32,7 +33,7 @@ do
     local type = type
     hook.Add("OnTeamCreated", "game.Console", function( index, name, color )
         if ( type(console) == "table" ) and ( type(console.devLog) == "function" ) then
-            console.devLog( "Team #" .. index .." created - ", color, name ):setTag( "Team Extensions" )
+            console.devLog( "Team #" .. index .." created - ", color, name ):setTag( packageName )
         end
     end)
 
