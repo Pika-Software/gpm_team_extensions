@@ -1,4 +1,4 @@
-local packageName = PKG and PKG["name"]
+local packageName = "Team Extensions"
 local hook_Run = hook.Run
 
 --[[-------------------------------------------------------------------------
