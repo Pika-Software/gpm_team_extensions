@@ -1,4 +1,5 @@
 local packageName = "Team Extensions"
+local logger = GPM.Logger( packageName )
 local hook_Run = hook.Run
 
 --[[-------------------------------------------------------------------------
@@ -24,26 +25,17 @@ do
 end
 
 --[[-------------------------------------------------------------------------
-	Logs ( works only with installed "Console Utils" )
-    https://github.com/Pika-Software/gpm_console_utils
+	Console Debug Log
 ---------------------------------------------------------------------------]]
-
-do
-
-    local type = type
-    hook.Add("OnTeamCreated", "game.Console", function( index, name, color )
-        if ( type(console) == "table" ) and ( type(console.devLog) == "function" ) then
-            console.devLog( "Team #" .. index .." created - ", color, name ):setTag( packageName )
-        end
-    end)
-
-end
+hook.Add("OnTeamCreated", packageName, function( index, name, color )
+    logger:debug( "Team #{1} created - {2}", index, name )
+end)
 
 --[[-------------------------------------------------------------------------
 	Player Extensions
 ---------------------------------------------------------------------------]]
 
-local PLAYER = FindMetaTable("Player")
+local PLAYER = FindMetaTable( "Player" )
 
 function PLAYER:IsConnecting()
 	return self:Team() == TEAM_CONNECTING
@@ -59,7 +51,7 @@ if SERVER then
             GAMEMODE.TeamBased = true
         end
 
-        if ( self:Team() == teamid ) then
+        if (self:Team() == teamid) then
             self:ChatPrint( "You're already on that team" )
             return false
         end
@@ -75,7 +67,7 @@ if SERVER then
         end
 
         self:SetTeam( teamid )
-        self["LastTeamSwitch"] = RealTime()
+        self.LastTeamSwitch = RealTime()
 
         return true
     end

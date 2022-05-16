@@ -1,10 +1,10 @@
-return {
-    name = "Team Extensions",
-    description = "Expansion of the library of teams of players and objects.",
-    version = "1.0.0",
-    dependencies = {
-        ["Environment Library"] = ">=1.0.0"
-    },
-    author = "PrikolMen:-b",
-    license = "MIT"
+Name = "Team Extensions"
+Description = "Expansion of the library of teams of players and objects."
+
+Author = "PrikolMen:-b"
+Version = "1.0.1"
+License = "MIT"
+
+Dependencies = {
+    ["Environment Library"] = ">=1.0.0"
 }
