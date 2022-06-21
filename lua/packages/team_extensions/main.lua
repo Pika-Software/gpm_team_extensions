@@ -97,8 +97,9 @@ end
 	Global Extensions
 ---------------------------------------------------------------------------]]
 
-function ENTITY:IsSpectator()
-	return self:Team() == TEAM_CONNECTING
+function PLAYER:IsSpectator()
+	local team_id = self:Team()
+	return team_id == TEAM_CONNECTING or team_id == TEAM_SPECTATOR
 end
 
 function ENTITY:IsUnassigned()
